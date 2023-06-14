@@ -1,0 +1,7 @@
+tkinter 
+os
+PIL
+requests
+json
+geocoder
+geopy.geocoders
