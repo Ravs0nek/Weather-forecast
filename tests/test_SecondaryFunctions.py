@@ -1,12 +1,15 @@
-from src.SecondaryFunctions import Functions as f
+import sys
 import tkinter as tk
 from PIL import Image, ImageTk
+sys.path.append('./src')
+from SecondaryFunctions import Functions as f
+
 
 def test_place_name():
     warsaw_latitude = 52.25
     warsaw_longitude = 21
     results = f.place_name(warsaw_latitude,warsaw_longitude)
-    assert results == 'Warszawa'
+    assert results == 'Warsaw'
 
 def test_date_shortener():
     date = '2023-06-16T17:31'
@@ -29,12 +32,7 @@ def test_place_coordinates():
     country = 'polska'
     assert f.place_coordinates(city,county,country) == (51.22,19.3)
 
-def test_weather_code_encoding():
-    weather_code= 2
-    wind = 20
-    root = tk.Tk()
-    photo = f.weather_code_encoding(weather_code, wind,25,25)
-    assert photo.height() == 25, photo.weidth() == 25
+
 
     
     

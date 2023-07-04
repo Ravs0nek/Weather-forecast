@@ -1,27 +1,27 @@
 # Weather forecast
  Weather forecast based on simple gui and rest api technology
  Kinds of weather forecast:
- -current weather
- -hourly weather forecast
- -week weather forecast
- -two week weather forecast
+ 1. current weather
+ 2. hourly weather forecast
+ 3. week weather forecast
+ 4. two week weather forecast
  
  Api used in program:
- -weather forecast: https://open-meteo.com/
- -geocoding: https://geocode.maps.co/
+ - weather forecast: https://open-meteo.com/
+ - geocoding: https://geocode.maps.co/
 
 How does it work?
--to run the application, run the main file
--in left corner app display current location, current weather and picture with current weather
--in the middle app has entry fields with location properties, if you want enter value click enter button
--if you want clear fields enter clear button
--if you want choose forecast type use combobox
+1. to run the application, run the main file
+2. in left corner app display current location, current weather and picture with current weather
+3. in the middle app has entry fields with location properties, if you want enter value click enter button
+4. if you want clear fields enter clear button
+5. if you want choose forecast type use combobox
 
 App structure:
--src - folder with source
--images - folder with images
--tests - folder with tests
--requirements - file with necessary libraries
+1. src - folder with source
+2. images - folder with images
+3. tests - folder with tests
+4. requirements - file with necessary libraries
 
 Authors:
--Miłosz Stawiak
+- Miłosz Stawiak

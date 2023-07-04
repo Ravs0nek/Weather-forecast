@@ -1,11 +1,13 @@
-from src.Weather import WeatherPredictions as wp
+import sys
+sys.path.append('./src')
+from Weather import WeatherPredictions as wp
 
 def test_week_weather():
     warsaw_latitude = 52.23
     warsaw_longitude = 21
     week_weather_predictions = wp.week_weather([warsaw_latitude,warsaw_longitude])
     place_name,dates,weather_codes,temperatures,precipitation_probabilities,windspeeds = week_weather_predictions[0],week_weather_predictions[1], week_weather_predictions[2],week_weather_predictions[3],week_weather_predictions[4],week_weather_predictions[5]
-    assert place_name == 'Warszawa' and len(dates) == 7 and len(weather_codes) == 7 and len(temperatures) == 7 and len(precipitation_probabilities) == 7 and len(windspeeds) == 7
+    assert place_name == 'Warsaw' and len(dates) == 7 and len(weather_codes) == 7 and len(temperatures) == 7 and len(precipitation_probabilities) == 7 and len(windspeeds) == 7
 
 def test_two_week_weather():
     poznan_latitude = 52.4

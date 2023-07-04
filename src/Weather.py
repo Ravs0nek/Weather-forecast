@@ -6,7 +6,7 @@ from SecondaryFunctions import Functions as Sf
 
 class WeatherPredictions():
 
-    def week_weather(coordinates):
+    def week_weather(coordinates: list) -> tuple[str, list, list, list, list, list]:
         first_day = datetime.strftime(datetime.now() + timedelta(1), "%Y-%m-%d")
         last_day = datetime.strftime(datetime.now() + timedelta(7), "%Y-%m-%d")
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={coordinates[0]}&longitude={coordinates[1]}&daily=weathercode,temperature_2m_max,precipitation_probability_max,windspeed_10m_max&start_date={first_day}&end_date={last_day}&timezone=auto')
@@ -20,7 +20,7 @@ class WeatherPredictions():
         windspeed = weather_data.get('windspeed_10m_max')
         return place,time,weather_code,temperature,precipitation_probability,windspeed
 
-    def two_week_weather(coordinates):
+    def two_week_weather(coordinates: list) -> tuple[str, list, list, list, list, list]:
         first_day = datetime.strftime(datetime.now() + timedelta(1), "%Y-%m-%d")
         last_day = datetime.strftime(datetime.now() + timedelta(14), "%Y-%m-%d")
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={coordinates[0]}&longitude={coordinates[1]}&daily=weathercode,temperature_2m_max,precipitation_probability_max,windspeed_10m_max&start_date={first_day}&end_date={last_day}&timezone=auto')
@@ -34,7 +34,7 @@ class WeatherPredictions():
         windspeed = weather_data.get('windspeed_10m_max')
         return place,time,weather_code,temperature,precipitation_probability,windspeed
 
-    def hourly_weather(coordinates):
+    def hourly_weather(coordinates: list) -> tuple[str, list, list, list, list, list]:
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={coordinates[0]}&longitude={coordinates[1]}&hourly=temperature_2m,precipitation_probability,weathercode,windspeed_10m&models=best_match&forecast_days=2&timezone=auto')
         response_json = response.json()
         place = Sf.place_name(coordinates[0], coordinates[1])
@@ -53,8 +53,8 @@ class WeatherPredictions():
             precipitation_probability.append(weather_data.get('precipitation_probability')[i])
             windspeed.append(weather_data.get('windspeed_10m')[i])
         return place,time,weather_code,temperature,precipitation_probability,windspeed
-
-    def current_weather_precipation_probability(coordinates):
+    
+    def current_weather_precipation_probability(coordinates: list) -> int:
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={coordinates[0]}&longitude={coordinates[1]}&hourly=temperature_2m,precipitation_probability,weathercode,windspeed_10m&models=best_match&forecast_days=2&timezone=auto')
         response_json = response.json()
         current_time = datetime.now()
@@ -65,7 +65,7 @@ class WeatherPredictions():
                 precipitation_probability =  weather_data.get('precipitation_probability')[i]
                 return precipitation_probability
 
-    def current_weather():
+    def current_weather() -> tuple[str, int, int, int, int]:
         coordinates = geocoder.ip('me')
         latitude = round(coordinates.lat,2)
         longitude = round(coordinates.lng,2)
